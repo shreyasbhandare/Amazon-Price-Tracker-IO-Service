@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=BioRhyme:wght@700&family=Sora:wght@500;600&display=swap');
+a {
+    color: black;
+    text-decoration: none;
+}
+
+body {
+    font-family: 'BioRhyme', serif;
+    font-family: 'Sora', sans-serif;
+    background-image: url('/images/low_poly_banner_design_2203.jpg');
+}
+
+#main-content {
+    right: 50%;
+    bottom: 50%;
+    transform: translate(50%,50%);
+    position: absolute;
+}
+
+#intro-text {
+    margin-bottom: 50px;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+input {
+    outline: 0;
+    border-width: 0 0 2px;
+    margin-top: 25px;
+    width: 80%;
+    height: 40px;
+    padding: 5px;
+    background: transparent;
+    font-size: 1.2em;
+}
+
+input:focus {
+	outline: none;
+    border-color: green
+}
+
+#email {
+}
+
+#product-url {
+}
+
+#subscribe-btn {
+    margin-top: 40px;
+    width: 30%;
+    height: 40px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    font-size: 1.2em;
+    padding: 5px;
+    color: white;
+}
+
+button {
+    background: #4b4b4b;
+    border: none;
+    cursor: pointer;
+}
+  
+button:active {
+    background: #e5e5e5;
+    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+    -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+    box-shadow: inset 0px 0px 5px #c1c1c1;
+    outline: none;
+    color: #4b4b4b !important;
+}
+
+form {
+    text-align: center;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 25px;
+    width: 100%;
+    background: transparent;
+    text-align: center;
+}
+
+#resubscribe-link {
+    text-align: center;
+}
+
+#resubscribe-link a {
+    color: blue;
+}
