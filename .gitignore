@@ -1,4 +1,4 @@
 node_modules/
 cred.env
 secure-connect-amzn-price-tracker.zip
-.vscode
+.vscode/
