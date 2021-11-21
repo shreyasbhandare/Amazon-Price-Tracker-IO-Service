@@ -1,4 +1,5 @@
 const { Query, Value, Values, Collection } = require("@stargate-oss/stargate-grpc-node-client");
+const amazonAsin = require('amazon-asin')
 
 const subscribe = async (client, email, product) => {
     try {
@@ -93,4 +94,13 @@ const unsubscribeAll = async (client) => {
     }
 }
 
-module.exports = { subscribe, unsubscribe, unsubscribeAll }
+const isValidProductUrl = (productUrl) => {
+    const product = amazonAsin.syncParseAsin(productUrl)
+    console.log(product)
+    if(product.ASIN === undefined) {
+        return false
+    }
+    return true
+}
+
+module.exports = { subscribe, unsubscribe, unsubscribeAll, isValidProductUrl }

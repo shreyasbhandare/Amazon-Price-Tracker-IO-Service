@@ -1,10 +1,10 @@
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
-const grpc = require("@grpc/grpc-js")
-const { StargateClient, StargateBearerToken, promisifyStargateClient } = require("@stargate-oss/stargate-grpc-node-client")
+const grpc = require('@grpc/grpc-js')
+const { StargateClient, StargateBearerToken, promisifyStargateClient } = require('@stargate-oss/stargate-grpc-node-client')
 require('dotenv').config({ path: path.join(__dirname, '../../cred.env')})
-const { subscribe, unsubscribe, unsubscribeAll } = require('../util/SubscriptionUtils.js')
+const { subscribe, unsubscribe, unsubscribeAll, isValidProductUrl } = require('../util/SubscriptionUtils.js')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -36,17 +36,23 @@ app.post('/subscribe', async (req, res) => {
     const email = req.body.email
     const productUrl = req.body.productUrl
 
-    var message = await subscribe(client, email, productUrl)
-
-    if(message === "error") {
-        res.status(500).send({
-            error: "Sorry! something went wrong on our side, please try again!"
+    if(!isValidProductUrl(productUrl)) {
+        res.status(400).send({
+            error: "Please enter correct product URL!"
         })
     } else {
-        res.status(201).send({
-            confirmMessage: "You are now subscribed! Please check your emails daily."
-        })
-    }
+        var message = await subscribe(client, email, productUrl)
+
+        if(message === "error") {
+            res.status(500).send({
+                error: "Sorry! something went wrong on our side, please try again!"
+            })
+        } else {
+            res.status(201).send({
+                confirmMessage: "You are now subscribed! Please check your emails daily."
+            })
+        }
+    } 
 })
 
 app.post('/unsubscribe', async (req, res) => {
