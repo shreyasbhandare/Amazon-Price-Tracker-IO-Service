@@ -1,7 +1,8 @@
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
-const { Client } = require("cassandra-driver")
+const grpc = require("@grpc/grpc-js")
+const { StargateClient, StargateBearerToken, promisifyStargateClient } = require("@stargate-oss/stargate-grpc-node-client")
 require('dotenv').config({ path: path.join(__dirname, '../../cred.env')})
 const { subscribe, unsubscribe, unsubscribeAll } = require('../util/SubscriptionUtils.js')
 
@@ -13,16 +14,19 @@ app.set('views', path.join(__dirname, '../../frontend'))
 app.use(express.static(path.join(__dirname, '../../frontend')))
 app.use(express.json())
 
-const client = new Client({
-    cloud: {
-        secureConnectBundle: "./backend/secure-connect-amzn-price-tracker.zip",
-    },
-    credentials: {
-      username: process.env.DATASTAX_USERNAME,
-      password: process.env.DATASTAX_PASSWORD,
-    },
-});
+const connectToDb = () => {
+    const astra_uri = process.env.ASTRA_URI
+    const bearer_token = process.env.BEARER_TOKEN
+    const bearerToken = new StargateBearerToken(bearer_token)
+    const credentials = grpc.credentials.combineChannelCredentials(grpc.credentials.createSsl(), bearerToken)
+    const stargateClient = new StargateClient(astra_uri, credentials)
+    console.log("made client");
+    const promisifiedClient = promisifyStargateClient(stargateClient)
+    console.log("promisified client")
+    return promisifiedClient
+}
 
+const client = connectToDb()
 
 app.get('/', (req, res) => {
     res.render('index')
