@@ -20,8 +20,10 @@ subscribeForm.addEventListener('submit', (e) => {
         response.json().then((data) => {
             if(data.error) {
                 messageOne.textContent = data.error
+                messageOne.style.color = "red"
             } else {
                 messageOne.textContent = data.confirmMessage
+                messageOne.style.color = "green"
             }
         })
     })
