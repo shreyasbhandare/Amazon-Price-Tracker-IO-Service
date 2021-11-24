@@ -16,7 +16,6 @@ const subscribe = async (client, email, product) => {
         const resultSet = existingRecords.getResultSet()
         const rows = resultSet.getRowsList()
 
-        console.log(rows[0].array[0][0][2])
         const productUrlValue = new Value()
         productUrlValue.setString(product)
         const collection = new Collection()
@@ -25,7 +24,6 @@ const subscribe = async (client, email, product) => {
         productUrlListValue.setCollection(collection)
 
         if(rows[0].array[0][0][2] == 0) {
-            console.log("insert")
             const newRecordQuery = new Query()
             newRecordQuery.setCql("INSERT INTO amzn_price_tracker.subscription (email, product) VALUES(?, ?)")
             
@@ -33,11 +31,8 @@ const subscribe = async (client, email, product) => {
             insertQueryValues.setValuesList([emailValue, productUrlListValue])
             newRecordQuery.setValues(insertQueryValues)
             
-            console.log("before insert")
             await client.executeQuery(newRecordQuery)
         } else {
-            console.log("update")
-
             const updateRecordQuery = new Query()
             updateRecordQuery.setCql("UPDATE amzn_price_tracker.subscription SET product = product + ? WHERE email = ?")
 
@@ -45,7 +40,6 @@ const subscribe = async (client, email, product) => {
             updateQueryValues.setValuesList([productUrlListValue, emailValue])
             updateRecordQuery.setValues(updateQueryValues)
             
-            console.log("before update")
             await client.executeQuery(updateRecordQuery)
         }
 
@@ -96,7 +90,6 @@ const unsubscribeAll = async (client) => {
 
 const isValidProductUrl = (productUrl) => {
     const product = amazonAsin.syncParseAsin(productUrl)
-    console.log(product)
     if(product.ASIN === undefined) {
         return false
     }
