@@ -1,6 +1,6 @@
 # Amazon Price Tracker IO Service
 
-This is a webapp written in Node.js/Express.js, Handlebars that serves as a user interface for Amazon Price Track App. This app is deployed on Heroku PaaS. You can enter your email, Amazon product URL and subscribe to get notified every day about the latest prices. A way better alternative to manually bookmarking and checking prices!
+Webapp serving as a user interface for Amazon Price Tracker App. This app uses Node.js/Express.js, Handlebars, Cassandra and is deployed on Heroku PaaS. You can enter your email, Amazon product URL and subscribe to get notified every day about the latest prices.
 
 ## Usage
 
