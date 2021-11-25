@@ -47,6 +47,10 @@ app.post('/subscribe', async (req, res) => {
             res.status(500).send({
                 error: "Sorry! something went wrong on our side, please try again!"
             })
+        } else if(message === "max_capacity") {
+            res.status(400).send({
+                error: "Sorry! you are already subscribed to 5 products"
+            })
         } else {
             res.status(201).send({
                 confirmMessage: "You are now subscribed! Please check your emails daily."
