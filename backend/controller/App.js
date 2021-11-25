@@ -59,7 +59,7 @@ app.post('/subscribe', async (req, res) => {
     } 
 })
 
-app.post('/unsubscribe', async (req, res) => {
+app.get('/unsubscribe', async (req, res) => {
     const email = req.query.email
 
     var message = await unsubscribe(client, email)
