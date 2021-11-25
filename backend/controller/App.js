@@ -64,6 +64,10 @@ app.post('/unsubscribe', async (req, res) => {
 
     var message = await unsubscribe(client, email)
 
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT")
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization")
+
     if(message === "error") {
         res.render('unsubscribe_page', {
             message: "Sorry! something went wrong!"
