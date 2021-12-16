@@ -1,20 +1,26 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Unsubscribe</title>
-        <link rel="stylesheet" href="/css/styles.css">
-    </head>
-
-    <body>
-        <div id="main-content">
-            <h3>{{ message }}</h3>
-            <div id="resubscribe-link"><a href="./">Resubscribe!</a></div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Price Tracker | Unsubscribe</title>
+</head>
+<body>
+    <section id="main-content" class="unsubscribe-content">
+        <div class="container">
+            <p class="unsubscribe-text">{{ message }}</p>
+            <a href="./">Resubscribe!</a>
         </div>
-        <footer>
-            <span>
-                @2021 | 
+    </section>
+
+    <footer id="footer">
+        <div class="container">
+            <p>EasyPriceTracker &copy; 2021, All Rights Reserved | 
                 <a href="mailto:amznpricetrack@gmail.com">Support</a>
-            </span>
-        </footer>
-    </body>
+            </p>
+        </div>
+    </footer>
+</body>
 </html>
