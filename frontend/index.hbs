@@ -1,27 +1,37 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Price Tracker</title>
-        <link rel="stylesheet" href="/css/styles.css">
-    </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Price Tracker</title>
+</head>
+<body>
+    <section id="main-content">
+        <div class="container">
+            <h1 class="l-heading">Track Amazon Product Prices Daily!</h1>
+            <form id="subscription-form">
+                <label for="email">Email</label>
+                <input id="email" type="email" name="email" placeholder="abc@pqr.com" autofocus required>
 
-    <body>
-        <div id="main-content">
-            <p id="intro-text">Track Amazon product prices daily!</p>
+                <label for="product-url">Product URL</label>
+                <input id="product-url" type="url" name="product-url" placeholder="Product URL" required>
 
-            <form>
-                <input placeholder="abc@pqr.com" name="email" id="email" type="email" autocomplete="off" autofocus required>
-                <input placeholder="Product URL" name="product-url" id="product-url" type="url" required><br>
-                <button id="subscribe-btn">Subscribe!</button>
-                <p id="message-one"></p>
+                <button class="btn" id="subscribe-btn">Subscribe!</button>
             </form>
+            <p id="response-message"></p>
         </div>
-        <script src="/js/clientApp.js"></script>
-        <footer>
-            <span>
-                @2021 | 
+    </section>
+
+    <footer id="footer">
+        <div class="container">
+            <p>EasyPriceTracker &copy; 2021, All Rights Reserved | 
                 <a href="mailto:amznpricetrack@gmail.com">Support</a>
-            </span>
-        </footer>
-    </body>
+            </p>
+        </div>
+    </footer>
+
+    <script src="/js/clientApp.js"></script>
+</body>
 </html>

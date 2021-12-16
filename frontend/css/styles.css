@@ -1,94 +1,101 @@
-@import url('https://fonts.googleapis.com/css2?family=BioRhyme:wght@700&family=Sora:wght@500;600&display=swap');
-a {
-    color: black;
-    text-decoration: none;
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    font-family: 'BioRhyme', serif;
-    font-family: 'Sora', sans-serif;
-    background-image: url('/images/low_poly_banner_design_2203.jpg');
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    background: url('../images/low_poly_banner_design_2203.jpg') no-repeat center center/cover;
 }
 
-#main-content {
-    right: 50%;
-    bottom: 50%;
-    transform: translate(50%,50%);
-    position: absolute;
-}
-
-#intro-text {
-    margin-bottom: 50px;
-    font-size: 2em;
+a {
+    text-decoration: none;
+    color: #000;
     font-weight: bold;
 }
 
-input {
-    outline: 0;
-    border-width: 0 0 2px;
-    margin-top: 25px;
-    width: 80%;
-    height: 40px;
-    padding: 5px;
-    background: transparent;
-    font-size: 1.2em;
-}
-
-input:focus {
-	outline: none;
-    border-color: green
-}
-
-#email {
-}
-
-#product-url {
-}
-
-#subscribe-btn {
-    margin-top: 40px;
-    width: 30%;
-    height: 40px;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 10px;
-    font-size: 1.2em;
-    padding: 5px;
-    color: white;
-}
-
-button {
-    background: #4b4b4b;
+.btn {
     border: none;
+    border-radius: 5px;
     cursor: pointer;
-}
-  
-button:active {
-    background: #e5e5e5;
-    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
-    -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
-    box-shadow: inset 0px 0px 5px #c1c1c1;
-    outline: none;
-    color: #4b4b4b !important;
-}
-
-form {
+    padding: 10px;
     text-align: center;
 }
 
-footer {
-    position: fixed;
-    left: 0;
-    bottom: 25px;
+#main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+}
+
+.container {
+    padding: 10px;
+}
+
+.l-heading {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.6rem;
+    color: #333;
+}
+
+#main-content #subscription-form {
+    max-width: 400px;
+}
+
+#main-content #subscription-form input {
+    display: block;
     width: 100%;
-    background: transparent;
-    text-align: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    color: #333;
 }
 
-#resubscribe-link {
-    text-align: center;
+#main-content #subscription-form input:focus {
+    border: none;
 }
 
-#resubscribe-link a {
-    color: blue;
+#main-content #subscription-form label {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#main-content #subscription-form #subscribe-btn {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    background: #333;
+    color: #fff;
+}
+
+#main-content #subscription-form #subscribe-btn:hover {
+    background: lightslategrey;
+    color: #fff;
+}
+
+#response-message {
+    margin-top: 20px;
+    text-align: center;
+    max-width: 400px;
+}
+
+#footer {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+
+#footer p {
+    font-size: 0.8rem;
+    text-align: center;
 }

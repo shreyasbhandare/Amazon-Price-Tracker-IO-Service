@@ -1,10 +1,10 @@
-const subscribeForm = document.querySelector('form')
+const subscribeForm = document.getElementById('subscription-form')
 const emailTag = document.getElementById('email');
 const productUrlTag = document.getElementById('product-url');
-const messageOne = document.getElementById('message-one');
+const message = document.getElementById('response-message');
 
 subscribeForm.addEventListener('submit', (e) => {
-    messageOne.textContent = ""
+    message.textContent = ""
     e.preventDefault()
 
     var payload = {
@@ -19,11 +19,11 @@ subscribeForm.addEventListener('submit', (e) => {
     }).then((response) => {
         response.json().then((data) => {
             if(data.error) {
-                messageOne.textContent = data.error
-                messageOne.style.color = "red"
+                message.textContent = data.error
+                message.style.color = "red"
             } else {
-                messageOne.textContent = data.confirmMessage
-                messageOne.style.color = "green"
+                message.textContent = data.confirmMessage
+                message.style.color = "green"
             }
         })
     })
